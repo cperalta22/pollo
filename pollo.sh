@@ -47,7 +47,7 @@ fi
 
 echo "POLLO INFORMA"
 echo "Cliente $(hostname)"
-echo "----------------------------------------------"
+echo "-------------------------"
 echo "RAM"
 echo "Disponible $availableMemPerc % de $totmem GB"
 echo "SWAP libre $freeSwapPerc % de $totswa GB"
