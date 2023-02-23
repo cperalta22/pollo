@@ -31,7 +31,7 @@ useswa=$((grep -i 'swa' free.tmp || echo "fail" ) | cut -f 3 -d ' ') # uso de sw
 freswa=$((grep -i 'swa' free.tmp || echo "fail" )| cut -f 4 -d ' ')
 rm free.tmp
 
-# new metrics
+# extra metrics
 if [ $availablemem != "fail" ] && [ $totmem != "fail" ]; then
     availableMemPerc=$(($availablemem *100 / $totmem)) # esta es la buena para saber cuanta memoria queda libre
 else
@@ -45,10 +45,16 @@ else
 fi
 
 
+# system snapshot
+
+logincontrol=$(loginctl)
+
+
+# report
+
 echo "POLLO INFORMA"
 echo "Cliente $(hostname)"
 echo "-------------------------"
 echo "RAM"
 echo "Disponible $availableMemPerc % de $totmem GB"
 echo "SWAP libre $freeSwapPerc % de $totswa GB"
-echo $maxswap
