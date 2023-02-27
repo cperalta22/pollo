@@ -22,7 +22,7 @@ else
 fi
 
 # basic metrics
-(timeout 3s free -g || echo "timeout" > free.tmp ) | tr -s ' ' > free.tmp
+(timeout 3s free -m || echo "timeout" > free.tmp ) | tr -s ' ' > free.tmp
 totmem=$((grep -i 'mem' free.tmp || echo "fail" ) | cut -f 2 -d ' ')
 usemem=$((grep -i 'mem' free.tmp || echo "fail" ) | cut -f 3 -d ' ')
 availablemem=$((grep -i 'mem' free.tmp || echo "fail")  | cut -f 7 -d ' ')
@@ -56,5 +56,7 @@ echo "POLLO INFORMA"
 echo "Cliente $(hostname)"
 echo "-------------------------"
 echo "RAM"
-echo "Disponible $availableMemPerc % de $totmem GB"
-echo "SWAP libre $freeSwapPerc % de $totswa GB"
+echo "Disponible $availableMemPerc % de $totmem MB"
+echo "SWAP libre $freeSwapPerc % de $totswa MB"
+echo
+echo "$logincontrol"
